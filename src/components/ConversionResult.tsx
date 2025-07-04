@@ -15,7 +15,7 @@ const ConversionResult: React.FC<ConversionResultProps> = ({
       {error}
     </Text>
   ) : result ? (
-    <Text color="green.600" fontWeight="bold" fontSize="lg" textAlign="center">
+    <Text color="accent" fontWeight="bold" fontSize="lg" textAlign="center">
       {result}
     </Text>
   ) : null;

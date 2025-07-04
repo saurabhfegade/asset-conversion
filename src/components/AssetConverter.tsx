@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   HStack,
+  IconButton,
   Spinner,
   Text,
   VStack,
@@ -101,7 +102,6 @@ const AssetConverter: React.FC = () => {
     setMode(other);
   };
 
-  // Compose error message for display below result
   let fetchError: string | null = null;
   if (mode === 'WBTC') {
     if (wbtcError) fetchError = `Failed to load WBTC metadata: ${wbtcError}`;
@@ -123,16 +123,26 @@ const AssetConverter: React.FC = () => {
         align="center"
         justify="center"
         borderRadius="lg"
-        boxShadow="md"
-        bg="white"
+        boxShadow="lg"
+        bg={{ base: 'gray.50', _dark: 'gray.800' }}
         maxW="100%"
       >
         <HStack justify="center" align="center" mb={4}>
-          <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            textAlign="center"
+            color={{ base: 'gray.900', _dark: 'white' }}
+          >
             {mode}
           </Text>
           <IconArrowRight />
-          <Text fontSize="2xl" fontWeight="bold" textAlign="center">
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            textAlign="center"
+            color={{ base: 'gray.900', _dark: 'white' }}
+          >
             {other}
           </Text>
         </HStack>
@@ -150,28 +160,30 @@ const AssetConverter: React.FC = () => {
           <Button
             onClick={handleSwitch}
             variant="outline"
+            bg={{ base: 'gray.100', _dark: 'gray.700' }}
             border="none !important"
             _focus={{
               border: 'none !important',
               outline: 'none !important',
             }}
             _hover={{
-              boxShadow: 'md !important',
+              boxShadow: 'sm !important',
               outline: 'none !important',
             }}
             size="sm"
             w="48%"
+            color={{ base: 'gray.900', _dark: 'white' }}
           >
             Switch Currencies
           </Button>
           <Button
             variant="solid"
-            color="white"
-            bg="#996FF5"
+            color={{ base: 'white', _dark: 'gray.900' }}
+            bg={{ base: '#996FF5', _dark: '#b794f4' }}
             border="none !important"
             w="48%"
             _hover={{
-              boxShadow: 'md !important',
+              boxShadow: 'sm !important',
               outline: 'none !important',
             }}
             _focus={{
@@ -191,7 +203,7 @@ const AssetConverter: React.FC = () => {
         </Flex>
         {loading ? (
           <Flex justify="center" mt={4}>
-            <Spinner />
+            <Spinner color={{ base: '#996FF5', _dark: '#b794f4' }} />
           </Flex>
         ) : null}
         <Box mt={4} w="100%">
@@ -200,25 +212,30 @@ const AssetConverter: React.FC = () => {
             error={error || priceError || fetchError}
           />
         </Box>
-        <Box mt={4} fontSize="sm" color="gray.500" textAlign="center">
+        <Box
+          mt={4}
+          fontSize="sm"
+          color={{ base: 'gray.500', _dark: 'gray.400' }}
+          textAlign="center"
+        >
           {btcPrice && <Text>Current BTC Price: {formatUSD(btcPrice)}</Text>}
           {lastSynced && (
-            <HStack justify="center" align="center" mt={0}>
-              <Text fontSize="xs" color="gray.400">
+            <HStack justify="center" align="center" w="100%">
+              <Text fontSize="xs">
                 Last synced: {lastSynced.toLocaleTimeString()}
               </Text>
-              <Button
+              <IconButton
                 onClick={refetch}
                 size="xs"
                 variant="ghost"
                 disabled={loading}
                 aria-label="Refresh BTC price"
-                p={1}
-                minW={0}
-                height="auto"
+                bg={{ base: 'gray.100', _dark: 'gray.900' }}
+                // height="auto"
+                color={{ base: '#996FF5', _dark: '#b794f4' }}
               >
-                <IconRefresh size={16} />
-              </Button>
+                <IconRefresh size={4} />
+              </IconButton>
             </HStack>
           )}
         </Box>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, InputGroup } from '@chakra-ui/react';
+import { Input, InputGroup, Text } from '@chakra-ui/react';
 import { CURRENCY_META, type Currency } from '../types/currency';
 
 interface CurrencyInputProps {
@@ -28,9 +28,14 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
   return (
     <div style={{ width: '100%' }}>
       {label && (
-        <label style={{ fontWeight: 500, marginBottom: 4, display: 'block' }}>
+        <Text
+          fontSize="sm"
+          fontWeight="medium"
+          mb={2}
+          color={{ base: 'gray.900', _dark: 'white' }}
+        >
           {label}
-        </label>
+        </Text>
       )}
       <InputGroup endElement={endElement}>
         <Input
@@ -42,7 +47,12 @@ const CurrencyInput: React.FC<CurrencyInputProps> = ({
           inputMode="decimal"
           autoComplete="off"
           maxLength={24}
+          color={{ base: 'gray.900', _dark: 'white' }}
+          _placeholder={{ color: { base: 'gray.500', _dark: 'gray.400' } }}
           style={isInvalid ? { borderColor: 'red' } : {}}
+          border="1px solid"
+          borderColor={{ base: 'gray.200', _dark: 'gray.700' }}
+          borderRadius="md"
         />
       </InputGroup>
     </div>
