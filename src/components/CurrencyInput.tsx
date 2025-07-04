@@ -1,0 +1,52 @@
+import React from 'react';
+import { Input, InputGroup } from '@chakra-ui/react';
+import { CURRENCY_META, type Currency } from '../types/currency';
+
+interface CurrencyInputProps {
+  value: string;
+  onChange: (val: string) => void;
+  mode: Currency;
+  iconUrl?: string;
+  label?: string;
+  isInvalid?: boolean;
+  placeholder?: string;
+}
+
+const CurrencyInput: React.FC<CurrencyInputProps> = ({
+  value,
+  onChange,
+  mode,
+  iconUrl,
+  label,
+  isInvalid,
+  placeholder,
+}) => {
+  const endElement = iconUrl ? (
+    <img src={iconUrl} alt="token icon" style={{ width: 24, height: 24 }} />
+  ) : undefined;
+
+  return (
+    <div style={{ width: '100%' }}>
+      {label && (
+        <label style={{ fontWeight: 500, marginBottom: 4, display: 'block' }}>
+          {label}
+        </label>
+      )}
+      <InputGroup endElement={endElement}>
+        <Input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={
+            placeholder || `Enter amount in ${CURRENCY_META[mode].symbol}`
+          }
+          inputMode="decimal"
+          autoComplete="off"
+          maxLength={24}
+          style={isInvalid ? { borderColor: 'red' } : {}}
+        />
+      </InputGroup>
+    </div>
+  );
+};
+
+export default CurrencyInput;
