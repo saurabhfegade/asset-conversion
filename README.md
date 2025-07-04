@@ -1,69 +1,56 @@
-# React + TypeScript + Vite
+# Asset Conversion App (USD <-> wBTC)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React + TypeScript app for converting between USD and Wrapped Bitcoin (wBTC) using live price data and on-chain token metadata. Built with Chakra UI v3, ethers.js, and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Live USD <-> wBTC conversion** using Coingecko API and on-chain wBTC contract data
+- **Dark mode** with a theme switcher (Chakra UI v3 color mode system)
+- **Responsive, accessible UI** with Chakra UI components
+- **Robust error handling** for API and network issues
+- **Web3 awareness**: placeholder for wallet/network detection
+- **Precision handling**: 2 decimals for USD, 8 for wBTC
+- **Refreshable BTC price** with last synced time
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Install dependencies
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Run the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run dev
 ```
+
+The app will be available at [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+### 3. Build for production
+
+```sh
+npm run build
+```
+
+### 4. Lint the code
+
+```sh
+npm run lint
+```
+
+## Tech Stack
+
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) for fast dev/build
+- [Chakra UI v3](https://chakra-ui.com/) for UI and theming
+- [ethers.js](https://docs.ethers.org/) for on-chain wBTC metadata
+- [Coingecko API](https://www.coingecko.com/en/api) for live BTC price
+
+## Project Structure
+
+- `src/components/` - UI components (converter, input, result, etc.)
+- `src/hooks/` - Custom React hooks (BTC price, wBTC metadata)
+- `src/utils/` - Utility functions (API, formatting, math)
+- `src/types/` - TypeScript types

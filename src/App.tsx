@@ -3,6 +3,7 @@ import { Flex } from '@chakra-ui/react';
 import { ColorModeButton } from './components/ui/color-mode';
 
 function App() {
+  console.log('Made with ❤️ by @saurabhfegade');
   return (
     <Flex
       minH="100vh"
