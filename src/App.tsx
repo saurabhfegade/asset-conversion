@@ -40,11 +40,13 @@ const dialog = createOverlay<NetworkModalProps>((props) => {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Unsupported Network</Dialog.Title>
+              <Dialog.Title color={{ base: 'black', _dark: 'white' }}>
+                Unsupported Network
+              </Dialog.Title>
             </Dialog.Header>
             <Dialog.Body spaceY="4">
               <Dialog.Description>
-                <Text mb={4}>
+                <Text mb={4} color={{ base: 'black', _dark: 'white' }}>
                   The selected network{' '}
                   <b>{NETWORK_LABELS[network] || network}</b> is not supported
                   for WBTC conversion.
