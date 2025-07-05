@@ -2,6 +2,13 @@
 
 A modern, responsive React + TypeScript app for converting between USD and Wrapped Bitcoin (wBTC) using live price data and on-chain token metadata. Built with Chakra UI v3, ethers.js, and Vite.
 
+## Additional Notes
+
+- Switching network from top right from Ethereum to Arbitrum or Polygon will show a modal with a message that the network is not supported for WBTC conversion.
+- Uncomment the throw error in `fetchErc20Meta` in `src/utils/erc20.ts` to see how the app handles errors.
+- There is functionality to also show last synced time for the BTC price, and refresh it.
+- Supports Light and Dark mode.
+
 ## Features
 
 - **Live USD <-> wBTC conversion** using Coingecko API and on-chain wBTC contract data
